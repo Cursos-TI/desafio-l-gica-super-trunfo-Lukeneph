@@ -4,80 +4,62 @@ typedef struct {
     char estado;
     char codigo[4];
     char nomeCidade[50];
-    int populacao;
+    unsigned long int populacao;
     float area;
     float pib;
     int pontosTuristicos;
-
+    float SuperPoder;
+    
+    
 } Carta;
 
-    int main() {
+int main() {
     Carta c1, c2;
-// cadastro da carta1
+    
     printf("estado (A-H): ");
     scanf(" %c", &c1.estado);
 
-    printf("nome da cidade: ");
-    scanf(" %[^\n]", c1.nomeCidade);
-
     printf("Codigo: ");
     scanf("%s", c1.codigo);
-
+    
+    printf("nome da cidade: ");
+    scanf(" %[^\n]", c1.nomeCidade);
+    
     printf("PIB: ");
     scanf("%f", &c1.pib);
-
+    
     printf("população (em milhões): ");
-    scanf("%d", &c1.populacao);
-
+    scanf("%lu", &c1.populacao);
+    
     printf("área (em km2):");
     scanf("%f", &c1.area );
-
+    
     printf("numero de pontos turisticos: ");
     scanf("%d", &c1.pontosTuristicos);
-
+    
     printf("                  \n");
-// cadastro da carta2
+      
     printf("estado (A-H): ");
     scanf(" %c", &c2.estado);
 
-    printf("nome da cidade: ");
-    scanf(" %[^\n]", c2.nomeCidade);
-
     printf("Codigo: ");
     scanf("%s", c2.codigo);
-
+    
+    printf("nome da cidade: ");
+    scanf(" %[^\n]", c2.nomeCidade);
+    
     printf("PIB: ");
     scanf("%f", &c2.pib);
-
+    
     printf("população (em milhões): ");
-    scanf("%d", &c2.populacao);
-
+    scanf("%lu", &c2.populacao);
+    
     printf("área (em km2):");
     scanf("%f", &c2.area );
-
+    
     printf("numero de pontos turisticos: ");
-    scanf("%d", &c2.pontosTuristicos);
-// impressão das cartas
-    printf("                  \n");
-    printf("carta 1:\n");
-    printf("Codigo: %s\n", c1.codigo);
-    printf("Nome da cidade: %s\n", c1.nomeCidade);
-    printf("estado: %c\n", c1.estado);
-    printf("PIB: %.2f Bilhões de reais\n", c1.pib);
-    printf("população: %d milhões\n", c1.populacao);
-    printf("área: %.2f km2\n", c1.area);
-    printf("Numero de pontos Turisticos: %d\n", c1.pontosTuristicos);
-
-    printf("                  \n");
-    printf("carta 2:\n");
-    printf("Codigo: %s\n", c2.codigo);
-    printf("Nome da cidade: %s\n", c2.nomeCidade);
-    printf("estado: %c\n", c2.estado);
-    printf("PIB: %.2f Bilhões de reais\n", c2.pib);
-    printf("população: %d milhões\n", c2.populacao);
-    printf("área: %.2f km2\n", c2.area);
-    printf("Numero de pontos Turisticos: %d\n", c2.pontosTuristicos);
-
+    scanf("%d", &c2.pontosTuristicos);  
+    
 // calculo de denssidade populacional e pib por capital
     float densidade1 = c1.populacao / c1.area;
     float pibPerCapita1 = c1.pib / c1.populacao;
@@ -88,11 +70,13 @@ typedef struct {
     printf("                  \n");
     
 // printf para mostrar os calculos da carta 1
+    printf("Carta 1 (%s): \n", c1.nomeCidade);
     printf("Densidade populacional: %.2f hab/km²\n", densidade1);
     printf("PIB por capital: %.2f\n", pibPerCapita1);
 
 // printf para mostrar os calculos da carta 2
     printf("                  \n");
+    printf("Carta 2 (%s): \n", c2.nomeCidade);
     printf("Densidade populacional: %.2f hab/km²\n", densidade2);
     printf("PIB por capital: %.2f\n", pibPerCapita2);
 
