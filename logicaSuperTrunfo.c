@@ -12,7 +12,7 @@ typedef struct {
     
     
 } Carta;
-
+ // Função principal
 int main() {
     Carta c1, c2;
     
@@ -58,38 +58,64 @@ int main() {
     scanf("%f", &c2.area );
     
     printf("numero de pontos turisticos: ");
-    scanf("%d", &c2.pontosTuristicos);  
+    scanf("%d", &c2.pontosTuristicos);
+  
     
 // calculo de denssidade populacional e pib por capital
     float densidade1 = c1.populacao / c1.area;
     float pibPerCapita1 = c1.pib / c1.populacao;
+    float densidadePopulacional = c1.populacao / c1.area;
 
     float densidade2 = c2.populacao / c2.area;
     float pibPerCapita2 = c2.pib / c2.populacao;
+    float densidadePopulacional2 = c2.populacao / c2.area;
 
+// Menu interativo
+int opcao;
+ 
     printf("                  \n");
     
-// printf para mostrar os calculos da carta 1
-    printf("Carta 1 (%s): \n", c1.nomeCidade);
-    printf("Densidade populacional: %.2f hab/km²\n", densidade1);
-    printf("PIB por capital: %.2f\n", pibPerCapita1);
+    printf("Menu Interativo:\n");
+    printf("1 - Nome do pais\n");
+    printf("2 - Atributo usado\n");
+    printf("3 - Os valores do atributos para cada carta\n");
+    printf("4 - Carta Vencedora\n");
 
-// printf para mostrar os calculos da carta 2
-    printf("                  \n");
-    printf("Carta 2 (%s): \n", c2.nomeCidade);
-    printf("Densidade populacional: %.2f hab/km²\n", densidade2);
-    printf("PIB por capital: %.2f\n", pibPerCapita2);
+    printf("Escolha uma opção (1-4): ");
+    scanf("%d", &opcao);
+// Processar a escolha do usuário
 
-    printf("                  \n");                                                                                                            
+    switch (opcao){
+    case 1:
+        printf("             \n");
+        printf("Carta 1: %s\n", c1.nomeCidade);
+        printf("Carta 2: %s\n", c2.nomeCidade);
+        break;
+    case 2:
+        printf("             \n");
+        printf("PIB per capita\n");
+        break;
+    case 3:
+        printf("             \n");
+        printf("Carta 1 - PIB per capita: %.2f\n", pibPerCapita1);
+        printf("Carta 2 - PIB per capita: %.2f\n", pibPerCapita2);
+        break;
+    case 4:
+        if (pibPerCapita1 > pibPerCapita2) {
+            printf("Carta Vencedora: %s\n", c1.nomeCidade);
+            printf("             \n");
+        } else if (pibPerCapita2 > pibPerCapita1) {
+            printf("             \n");
+            printf("Carta Vencedora: %s\n", c2.nomeCidade);
+        } else {
+            printf("             \n");
+            printf("Empate!\n");
+        }
+        break;
 
-// comparação de cartas usando pib
-if (c1.pib > c2.pib) {
-    printf("Resultado: Carta 1 (%s) venceu!\n", c1.nomeCidade);
-} else if (c1.pib < c2.pib) {
-    printf("Resultado: Carta 2 (%s) venceu!\n", c2.nomeCidade);
-} else {
-    printf("Empate!\n");
-}
+    default:
+        printf("Opção inválida!\n");
+        break;}
 
 return 0;
 }
