@@ -62,60 +62,107 @@ int main() {
   
     
 // calculo de denssidade populacional e pib por capital
-    float densidade1 = c1.populacao / c1.area;
+    float densidade1 = (float)c1.populacao / c1.area;
+    float densidade2 = (float)c2.populacao / c2.area;
     float pibPerCapita1 = c1.pib / c1.populacao;
-    float densidadePopulacional = c1.populacao / c1.area;
-
-    float densidade2 = c2.populacao / c2.area;
     float pibPerCapita2 = c2.pib / c2.populacao;
-    float densidadePopulacional2 = c2.populacao / c2.area;
+
+    int atributo1, atributo2;
+    float valor1c1 = 0, valor1c2 = 0;
+    float valor2c1 = 0, valor2c2 = 0;
 
 // Menu interativo
-int opcao;
- 
+    int opcao;
     printf("                  \n");
-    
-    printf("Menu Interativo:\n");
-    printf("1 - Nome do pais\n");
-    printf("2 - Atributo usado\n");
-    printf("3 - Os valores do atributos para cada carta\n");
-    printf("4 - Carta Vencedora\n");
-
-    printf("Escolha uma opção (1-4): ");
+    printf("Menu Interativo \n");
+    printf("1 - Informações das cartas\n");
+    printf("2 - Regras\n");
+    printf("3 - Exit\n");
     scanf("%d", &opcao);
-// Processar a escolha do usuário
 
-    switch (opcao){
+    printf("             \n");
+
+    switch (opcao) {
     case 1:
+        printf("Carta 1 \n");
+        printf("Cidade: %s\n", c1.nomeCidade);
+        printf("PIB: %.2f\n", c1.pib);
+        printf("População: %lu\n", c1.populacao);
+
         printf("             \n");
-        printf("Carta 1: %s\n", c1.nomeCidade);
-        printf("Carta 2: %s\n", c2.nomeCidade);
-        break;
-    case 2:
+
+
+        printf("Carta 2 \n");
+        printf("Cidade: %s\n", c2.nomeCidade);
+        printf("PIB: %.2f\n", c2.pib);
+        printf("População: %lu\n", c2.populacao);
+
         printf("             \n");
-        printf("PIB per capita\n");
-        break;
-    case 3:
+
+        // SEGUNDO MENU
+        printf("Comparativo Carta 1: %s \n", c1.nomeCidade);
+        printf("1 - PIB per capita\n");
+        printf("2 - População\n");
+        int escolha1;
+        scanf("%d", &escolha1);
+
         printf("             \n");
-        printf("Carta 1 - PIB per capita: %.2f\n", pibPerCapita1);
-        printf("Carta 2 - PIB per capita: %.2f\n", pibPerCapita2);
-        break;
-    case 4:
-        if (pibPerCapita1 > pibPerCapita2) {
-            printf("Carta Vencedora: %s\n", c1.nomeCidade);
-            printf("             \n");
-        } else if (pibPerCapita2 > pibPerCapita1) {
-            printf("             \n");
-            printf("Carta Vencedora: %s\n", c2.nomeCidade);
+
+
+        printf("Comparativo Carta 2: %s \n", c2.nomeCidade);
+        printf("1 - PIB per capita\n");
+        printf("2 - População\n");
+        int escolha2;
+        scanf("%d", &escolha2);
+
+        printf("             \n");
+
+
+        // Impedir mesma escolha
+        if (escolha1 == escolha2) {
+            printf("Erro: não é permitido escolher o mesmo atributo!\n");
         } else {
-            printf("             \n");
-            printf("Empate!\n");
+            float valor1 = 0, valor2 = 0;
+
+            // Escolha da carta 1
+            if (escolha1 == 1) valor1 = pibPerCapita1;
+            else if (escolha1 == 2) valor1 = c1.populacao;
+
+            // Escolha da carta 2
+            if (escolha2 == 1) valor2 = pibPerCapita2;
+            else if (escolha2 == 2) valor2 = c2.populacao;
+            // Comparação
+            printf("Resultado:\n");
+            if (valor1 > valor2) {
+                printf("Carta 1 (%s) venceu!\n", c1.nomeCidade);
+                printf("Com diferença de (Aproximadamente): %.2f\n", valor1 - valor2);
+            } else if (valor2 > valor1) {
+                printf("Carta 2 (%s) venceu!\n", c2.nomeCidade);
+                printf("Com diferença de (Aproximadamente): %.2f\n", valor2 - valor1);
+            } else {
+                printf("Empate!\n");
+            }
         }
+        break;
+
+    case 2:
+        printf("Regras: Cada jogador seleciona um valor para uma carta.\n");
+        printf("Quem tiver o maior valor VENCE!!!!!!\n");
+        printf("Se ambos escolherem o mesmo atributo, o jogo termina em empate.\n");
+        printf("Um jogador não pode escolher o mesmo atributo que o outro jogador.\n");
+        printf("Não é permitido valores negativos.\n");
+        printf("Não abuse dos numeros absurdos.\n");
+        printf("Boa sorte e divirta-se!\n");
+        break;
+
+    case 3:
+        printf("Saindo...\n");
         break;
 
     default:
         printf("Opção inválida!\n");
-        break;}
+        break;
+    }
 
-return 0;
+    return 0;
 }
