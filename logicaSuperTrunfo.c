@@ -71,7 +71,7 @@ int main() {
     float valor1c1 = 0, valor1c2 = 0;
     float valor2c1 = 0, valor2c2 = 0;
 
-// Menu interativo
+    // menu interativo 1
     int opcao;
     printf("                  \n");
     printf("Menu Interativo \n");
@@ -99,7 +99,7 @@ int main() {
 
         printf("             \n");
 
-        // SEGUNDO MENU
+        // segundo menu
         printf("Comparativo Carta 1: %s \n", c1.nomeCidade);
         printf("1 - PIB per capita\n");
         printf("2 - População\n");
@@ -118,7 +118,7 @@ int main() {
         printf("             \n");
 
 
-        // Impedir mesma escolha
+        // Impedir que os jogadores escolham o mesmo atributo
         if (escolha1 == escolha2) {
             printf("Erro: não é permitido escolher o mesmo atributo!\n");
         } else {
@@ -131,7 +131,7 @@ int main() {
             // Escolha da carta 2
             if (escolha2 == 1) valor2 = pibPerCapita2;
             else if (escolha2 == 2) valor2 = c2.populacao;
-            // Comparação
+            // comparação e resultado
             printf("Resultado:\n");
             if (valor1 > valor2) {
                 printf("Carta 1 (%s) venceu!\n", c1.nomeCidade);
